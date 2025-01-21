@@ -37,12 +37,11 @@ const UserList = () => {
       <ul>
         {users.map((user) => (
           <li key={user._id}>
-            <Link to={`/users/${user._id}`}>{user.name}</Link>
+            <Link to={`/usercreate/${user._id}`}>{user.name}</Link>
           </li>
         ))}
       </ul>
     </div>
   );
 };
-
 export default UserList;
