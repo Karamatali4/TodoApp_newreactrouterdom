@@ -4,6 +4,7 @@ import UserDetail, { loader as userDetailLoader } from './Routes/UserDetail';
 import ErrorPage from './Component/ErrorPage';
 import UpdateUser from './Routes/UpdateUser';
 import { loader  } from './store';
+import UserCreate from './Routes/UserCreate';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,12 @@ const router = createBrowserRouter([
         path: 'usersUpdate/:id', // Corrected the path
         element: <UpdateUser />,
         loader: loader,
+      },
+      {
+        path: 'usercreate/:id', // Corrected the path
+        element: <UserCreate />,
+        loader: userDetailLoader,
+
       },
     ],
   },
