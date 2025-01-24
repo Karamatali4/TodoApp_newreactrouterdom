@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   const fetchUsers = async () => {
-    const res = await axios.get('http://localhost:5000/users');
+    const res = await axios.get("http://localhost:5000/users");
     setUsers(res.data);
   };
 
   const addUser = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/users', { name });
-    setName('');
+    await axios.post("http://localhost:5000/users", { name });
+    setName("");
     fetchUsers();
   };
 

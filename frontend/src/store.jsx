@@ -1,20 +1,13 @@
-import axios from 'axios';
-import React from 'react'
-
-
+import axios from "axios";
+import React from "react";
 
 export const loader = async ({ params }) => {
-    const res = await axios.get(`https://dummyjson.com/users`);
-    return res.data;
-  };
+  const res = await axios.get(`https://dummyjson.com/users`);
+  return res.data;
+};
 
-  
 function store() {
-  return (
-    <>
-    
-    </>
-  )
+  return <></>;
 }
 
-export default store
+export default store;

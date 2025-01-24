@@ -22,9 +22,9 @@ const UserDetail = () => {
               dumimg.avatar ||
               `https://robohash.org/${dumimg.id}.png?size=200x200`
             }
-            alt="" className="rounded"
+            alt=""
+            className="rounded"
           />
-          
 
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
