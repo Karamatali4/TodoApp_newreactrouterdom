@@ -6,6 +6,7 @@ const createUser = async (req, res) => {
     const user = new User(req.body);
     await user.save();
     res.send(user);
+    console.log("Creating new User...");
   } catch (error) {
     console.log(error);
   }
@@ -16,6 +17,7 @@ const getUser = async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
+    console.log("Get all User...");
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error fetching contacts" });
@@ -24,10 +26,15 @@ const getUser = async (req, res) => {
 
 // get single user
 const getSingleUser = async (req, res) => {
-  const user = await User.findById(req.params.id);
-  res.send(user);
+  try {
+    const user = await User.findById(req.params.id);
+    res.send(user);
+    res.status(200).json(user);
+    console.log("Creating new User...");
+  } catch (error) {
+    console.log(error);
+  }
 };
-
 
 // update user
 const updateUser = async (req, res) => {
@@ -43,13 +50,13 @@ const updateUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.status(200).json(updatedUser); // Send a 200 OK response with the updated user
+    res.status(200).json(updatedUser);
+    console.log("Updating  User...");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error updating user" });
   }
 };
-
 
 // for delete user
 const deleteUser = async (req, res) => {
@@ -59,6 +66,7 @@ const deleteUser = async (req, res) => {
       return res.status(404).json({ message: "Contact not found" });
     }
     res.json({ message: "Contact deleted successfully" });
+    console.log("Delete User...");
   } catch (error) {
     console.log(error);
   }
