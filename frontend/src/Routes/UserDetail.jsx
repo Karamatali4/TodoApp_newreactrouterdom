@@ -15,8 +15,8 @@ const UserDetail = () => {
   };
   return (
     <>
-      <div className="container w-[50rem] h-[20rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300">
-        <div className="p-5 text-lime-50 flex justify-center items-center gap-5">
+      <div className="container w-[50rem] h-[100vh] flex bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300">
+        <div className="p-5 text-lime-50 flex justify-center items-start gap-5">
           <img
             src={
               dumimg.avatar ||
@@ -67,6 +67,7 @@ const UserDetail = () => {
                     </a>
                   </td>
                   <td class="px-6 py-4">
+                    
                     <a
                       href="#"
                       class="font-medium text-blue-600 dark:text-blue-500 hover:underline"

@@ -18,9 +18,9 @@ const router = createBrowserRouter([
         loader: userDetailLoader,
       },
       {
-        path: "usersUpdate/:id", // Corrected the path
+        path: "users/:id/edit", // Corrected the path
         element: <UpdateUser />,
-        loader: loader,
+        loader: userDetailLoader,
       },
       {
         path: "usercreate/:id", // Corrected the path
