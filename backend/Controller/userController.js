@@ -28,9 +28,8 @@ const getUser = async (req, res) => {
 const getSingleUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    res.send(user);
     res.status(200).json(user);
-    console.log("Creating new User...");
+    console.log(" get single User...");
   } catch (error) {
     console.log(error);
   }
