@@ -34,7 +34,7 @@ function Root() {
         {/* Right side */}
         <div
           id="detail"
-          className="h-[100vh] flex justify-start gap-5 w-[100%]"
+          className="h-[100vh] bg-slate-200 flex justify-start gap-5 w-[100%]"
         >
           <Outlet />
         </div>

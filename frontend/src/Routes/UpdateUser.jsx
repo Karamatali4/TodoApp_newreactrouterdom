@@ -1,12 +1,19 @@
 import axios from "axios";
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData } from "react-router-dom";
 
-
-// action 
-export const action = async({request,params}) => {
-  const formdata = await request.formData();
-  const updates = Object.fromEntries(formdata); 
-}
+// action
+export const action = async ({ request, params }) => {
+  const formData = await request.formData();
+  const userName = formData.get("name");
+  const userAge = formData.get("age");
+  const userEmail = formData.get("email");
+  const updates = Object.fromEntries(formData);
+  updates.name; // "name"
+  updates.age; // "age"
+  updates.email; // "email"
+  await updateContact(params.contactId, updates);
+  return redirect(`/users/${params.contactId}`);
+};
 
 function UpdateUser() {
   const user = useLoaderData();
@@ -32,7 +39,7 @@ function UpdateUser() {
                 type="text"
                 placeholder="Enter Name"
                 className="ms-2 outline-none text-black rounded-md py-2 px-4"
-                name=""
+                name="name"
                 defaultValue={user?.name}
                 onChange={(e) => ""}
               />
@@ -45,6 +52,7 @@ function UpdateUser() {
                 type="text"
                 placeholder="Enter Age "
                 className="ms-2 outline-none text-black rounded-md py-2 px-4"
+                name="age"
               />
             </div>
             <div className="box">
@@ -55,6 +63,7 @@ function UpdateUser() {
                 type="text"
                 placeholder="Enter Email"
                 className="ms-2 outline-none text-black rounded-md py-2 px-4"
+                name="email"
               />
             </div>
             <div className="box flex gap-5">

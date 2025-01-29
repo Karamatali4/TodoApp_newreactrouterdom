@@ -3,13 +3,14 @@ import Root from "./Routes/Root";
 import UserDetail, { loader as userDetailLoader } from "./Routes/UserDetail";
 import ErrorPage from "./Component/ErrorPage";
 import UpdateUser from "./Routes/UpdateUser";
+import {loader as loaderdata} from "./Component/UserList";
 import { loader } from "./store";
 import UserCreate from "./Routes/UserCreate";
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    loader: loaderdata,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         path: "usercreate/:id", // Corrected the path
         element: <UserCreate />,
         loader: userDetailLoader,
+        // action:useraction,
       },
     ],
   },

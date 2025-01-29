@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useLoaderData } from "react-router-dom";
 
 export const loader = async ({ params }) => {
-  const res = await axios.get(`http://localhost:5000/users/${params.id}`);
+  const res = await axios.get(`${import.meta.env.VITE_URL_API}/users/${params.id}`);
   return res.data;
 };
 
