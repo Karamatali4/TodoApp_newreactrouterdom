@@ -3,9 +3,10 @@ import Root from "./Routes/Root";
 import UserDetail, { loader as userDetailLoader } from "./Routes/UserDetail";
 import ErrorPage from "./Component/ErrorPage";
 import UpdateUser from "./Routes/UpdateUser";
-import {loader as loaderdata} from "./Component/UserList";
+import { loader as loaderdata } from "./Component/UserList";
 import { loader } from "./store";
 import UserCreate from "./Routes/UserCreate";
+import DeleteUser, { action as deleteUser } from "./Routes/DeleteUser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,15 +20,19 @@ const router = createBrowserRouter([
         loader: userDetailLoader,
       },
       {
-        path: "users/:id/edit", // Corrected the path
+        path: "users/:id/edit",
         element: <UpdateUser />,
         loader: userDetailLoader,
       },
       {
-        path: "usercreate/:id", // Corrected the path
+        path: "usercreate/:id",
         element: <UserCreate />,
         loader: userDetailLoader,
         // action:useraction,
+      },
+      {
+        path: "users/:id/destroy",
+        action: deleteUser,
       },
     ],
   },
