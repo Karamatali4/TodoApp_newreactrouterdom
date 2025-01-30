@@ -1,23 +1,7 @@
-import React, { useState } from "react";
 import axios from "axios";
-import {
-  Form,
-  NavLink,
-  redirect,
-  useLoaderData,
-  useSubmit,
-} from "react-router-dom";
-
-
-
-// action function
-export async function action({ request, params }) {
-  const formData = await request.formData();
-  const userName = formData.get("name");
-  const updates = Object.fromEntries(formData);
-  await updateContact(params.contactId, updates);
-  return redirect(`/contacts/${params.contactId}`);
-}
+import React, { useState } from "react";
+import { MdDelete } from "react-icons/md";
+import { Form, NavLink, useLoaderData, useSubmit } from "react-router-dom";
 
 // loader data
 export const loader = async () => {
@@ -31,11 +15,27 @@ const UserList = () => {
   const [users, setUsers] = useState(userData);
   const submit = useSubmit();
 
+  // creating user
   const addUser = async (e) => {
     e.preventDefault();
-    const res = await axios.post(`${import.meta.env.VITE_URL_API}/users`, { name });
+    const res = await axios.post(`${import.meta.env.VITE_URL_API}/users`, {
+      name,
+    });
     setName("");
-    setUsers([...users, res.data]); // adding the new user to the state
+    setUsers([...users, res.data]);
+  };
+
+  // for delete user
+  const handleDelete = (event, id) => {
+    event.preventDefault();
+    if (!confirm("Please confirm you want to delete this record.")) {
+      return;
+    }
+    submit(event.currentTarget, {
+      method: "post",
+      action: `/users/${id}/destroy`,
+    });
+    setUsers(users.filter((user) => user._id !== id));
   };
 
   return (
@@ -59,7 +59,10 @@ const UserList = () => {
       </Form>
       <ul className="ps-2 pt-2 h-[37.3rem] scroll-smooth overflow-y-auto no-scrollbar">
         {users.map((user) => (
-          <li className="font-bold text-lg text-yellow-300" key={user._id}>
+          <li
+            className="font-bold text-lg text-yellow-300 flex justify-between"
+            key={user._id}
+          >
             <NavLink
               to={`/usercreate/${user._id}`}
               className={({ isActive, isPending }) =>
@@ -72,6 +75,15 @@ const UserList = () => {
             >
               {user.name}
             </NavLink>
+            <Form
+              method="post"
+              action={`/users/${user._id}/destroy`}
+              onSubmit={(event) => handleDelete(event, user._id)}
+            >
+              <button type="submit" className="text-red-700  text-xl font-bold">
+                <MdDelete />
+              </button>
+            </Form>
           </li>
         ))}
       </ul>
