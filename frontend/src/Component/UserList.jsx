@@ -80,7 +80,7 @@ const UserList = () => {
               action={`/users/${user._id}/destroy`}
               onSubmit={(event) => handleDelete(event, user._id)}
             >
-              <button type="submit" className="text-red-700  text-xl font-bold">
+              <button type="submit" className="text-red-100 hover:text-red-500 text-xl font-bold">
                 <MdDelete />
               </button>
             </Form>
