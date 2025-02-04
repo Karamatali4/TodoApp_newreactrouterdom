@@ -9,6 +9,7 @@ export const loader = async ({ params }) => {
 
 const UserDetail = () => {
   const user = useLoaderData();
+  console.log(user);
   if (!user) return <div>Loading...</div>;
   const dumimg = {
     avatar: "https://robohash.org/you.png?size=200x200",
@@ -16,15 +17,8 @@ const UserDetail = () => {
   return (
     <>
       <div className="container w-[50rem] h-[100vh] flex bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300">
-        <div className="p-5 text-lime-50 flex justify-center items-start gap-5">
-          <img
-            src={
-              dumimg.avatar ||
-              `https://robohash.org/${dumimg.id}.png?size=200x200`
-            }
-            alt=""
-            className="rounded"
-          />
+        <div className=" text-lime-50 mx-auto mt-5">
+          
 
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -47,38 +41,18 @@ const UserDetail = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-
-                
-
-                <tr>
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {user.name}
-                  </th>
-                  <td class="px-6 py-4">{user.age}</td>
-                  <td class="px-6 py-4">{user.email}</td>
-
-                  <td class="px-6 py-4">
-                    <a
-                      href="#"
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Edit
-                    </a>
-                  </td>
-                  <td class="px-6 py-4">
-                    
-                    <a
-                      href="#"
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Delete
-                    </a>
-                  </td>
-                </tr>
+              <tbody className="text-lime-100 font-bold">
+                {user.map((data, index) => (
+                  <>
+                    <tr>
+                      <td class="px-6 py-4">{data.name}</td>
+                      <td class="px-6 py-4">{data.age}</td>
+                      <td class="px-6 py-4">{data.email}</td>
+                      <td class="px-6 py-4">Edit</td>
+                      <td class="px-6 py-4">Delete</td>
+                    </tr>
+                  </>
+                ))}
               </tbody>
             </table>
           </div>
