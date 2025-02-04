@@ -2,17 +2,29 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   Form,
+  redirect,
   useActionData,
   useLoaderData,
   useSubmit,
 } from "react-router-dom";
 
-// Action function creating user
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const newUser = Object.fromEntries(formData);
-  const res = await axios.post(`${import.meta.env.VITE_URL_API}/users`, newUser);
+// Loader function to fetch users
+export const loader = async () => {
+  const res = await axios.get(`${import.meta.env.VITE_URL_API}/users`);
   return res.data;
+};
+
+// Action function creating user
+export const action = async ({ request, params }) => {
+  const formData = await request.formData();
+  const userData = Object.fromEntries(formData);
+
+  // API request directly inside action
+  await axios.put(`${import.meta.env.VITE_URL_API}/users/${params.id}`, userData, {
+    headers: { "Content-Type": "application/json" },
+  });
+
+  return redirect(`/users`);
 };
 
 function UserCreate() {
@@ -30,8 +42,6 @@ function UserCreate() {
     }
   }, [loaderData]);
 
-  
-
   return (
     <>
       <div className="container w-[50rem] h-[23rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300">
@@ -40,7 +50,6 @@ function UserCreate() {
 
           <Form
             method="post"
-            // onClick={handleForm}
             className="flex flex-col justify-center items-center gap-10"
           >
             <div className="box">

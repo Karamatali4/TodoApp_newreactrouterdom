@@ -5,7 +5,7 @@ import ErrorPage from "./Component/ErrorPage";
 import UpdateUser,{action as updateAction} from "./Routes/UpdateUser";
 import { action, loader as loaderdata } from "./Component/UserList";
 import { loader } from "./store";
-import UserCreate from "./Routes/UserCreate";
+import UserCreate,{action as createAction} from "./Routes/UserCreate";
 import DeleteUser, { action as deleteUser } from "./Routes/DeleteUser";
 import SingleUser from "./Routes/SingleUser";
 const router = createBrowserRouter([
@@ -17,8 +17,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "users", 
+        path: "/users", 
         element: <UserDetail />,
+        loader:loaderdata,
         
       },
       {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         path: "usercreate/:id",
         element: <UserCreate />,
         loader: userDetailLoader,
-        // action:useraction,
+        action:createAction,
       },
       {
         path: "users/:id/destroy",
