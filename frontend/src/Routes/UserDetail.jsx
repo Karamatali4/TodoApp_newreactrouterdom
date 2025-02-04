@@ -48,6 +48,9 @@ const UserDetail = () => {
                 </tr>
               </thead>
               <tbody>
+
+                
+
                 <tr>
                   <th
                     scope="row"

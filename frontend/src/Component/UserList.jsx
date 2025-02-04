@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { Form, NavLink, useLoaderData, useNavigation } from "react-router-dom";
 
@@ -16,6 +16,7 @@ export const action = async ({ request }) => {
   const res = await axios.post(`${import.meta.env.VITE_URL_API}/users`, newUser);
   return res.data;
 };
+
 
 const UserList = () => {
   const users = useLoaderData();

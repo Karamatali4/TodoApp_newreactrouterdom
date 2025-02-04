@@ -7,29 +7,13 @@ import {
   useSubmit,
 } from "react-router-dom";
 
-// action function
-// export async function useraction({ request,params }) {
-//   try {
-//     const formData = await request.formData();
-//     console.log("Formdata in action", formData);
-
-//     // Add name, age, and email to the FormData object
-//     formData.append('name', formData.get('name'));
-//     formData.append('age', formData.get('age'));
-//     formData.append('email', formData.get('email'));
-
-//     await axios.post(`${import.meta.env.VITE_URL_API}/users/${params.id }`, formData, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     return { success: true };
-//   } catch (error) {
-//     console.error('Error uploading data:', error);
-//     return { error: 'Failed to upload data' };
-//   }
-// }
+// Action function creating user
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const newUser = Object.fromEntries(formData);
+  const res = await axios.post(`${import.meta.env.VITE_URL_API}/users`, newUser);
+  return res.data;
+};
 
 function UserCreate() {
   const loaderData = useLoaderData();

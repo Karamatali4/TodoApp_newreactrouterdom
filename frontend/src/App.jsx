@@ -2,11 +2,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./Routes/Root";
 import UserDetail, { loader as userDetailLoader } from "./Routes/UserDetail";
 import ErrorPage from "./Component/ErrorPage";
-import UpdateUser from "./Routes/UpdateUser";
+import UpdateUser,{action as updateAction} from "./Routes/UpdateUser";
 import { action, loader as loaderdata } from "./Component/UserList";
 import { loader } from "./store";
 import UserCreate from "./Routes/UserCreate";
 import DeleteUser, { action as deleteUser } from "./Routes/DeleteUser";
+import SingleUser from "./Routes/SingleUser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,14 +17,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "users/:id", // Corrected the path
+        path: "users", 
         element: <UserDetail />,
+        
+      },
+      {
+        path: "singleuser/:id", 
+        element: <SingleUser />,
         loader: userDetailLoader,
       },
       {
-        path: "users/:id/edit",
+        path: "users/:id",
         element: <UpdateUser />,
         loader: userDetailLoader,
+        action:updateAction,
       },
       {
         path: "usercreate/:id",
