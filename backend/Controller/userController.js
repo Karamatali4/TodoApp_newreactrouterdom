@@ -5,10 +5,11 @@ const createUser = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    res.send(user);
+    res.status(201).json({message:"User Creating Successfully...",user});
     console.log("Creating new User...");
   } catch (error) {
     console.log(error);
+    res.status(404).json({message:"User Creating Unsuccessfully..."});
   }
 };
 
