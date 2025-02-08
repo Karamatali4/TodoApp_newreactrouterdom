@@ -72,6 +72,7 @@ function UserCreate() {
               <input
                 type="text"
                 placeholder="Enter Age "
+                value={loaderData.age}
                 className="ms-2 outline-none text-black rounded-md py-2 px-4"
                 name="age"
               />
@@ -83,6 +84,7 @@ function UserCreate() {
               <input
                 type="text"
                 placeholder="Enter Email"
+                value={loaderData.email}
                 className="ms-2 outline-none text-black rounded-md py-2 px-4"
                 name="email"
               />
