@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 // Action function to handle form submission & update user
 export const action = async ({ request, params }) => {
@@ -11,11 +11,12 @@ export const action = async ({ request, params }) => {
     headers: { "Content-Type": "application/json" },
   });
 
-  return redirect(`/users/${params.id}`);
+  return redirect(`/users`);
 };
 
 function UpdateUser() {
   const user = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <div className="container w-[50rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300 p-5 text-lime-50">
@@ -62,7 +63,10 @@ function UpdateUser() {
           <button type="submit" className="bg-cyan-700 py-2 px-8 rounded-md hover:bg-cyan-800 font-bold">
             Save
           </button>
-          <button type="button" className="bg-gray-500 py-2 px-8 rounded-md hover:bg-gray-700 font-bold">
+          <button type="button" onClick={() => {
+            navigate(-1);
+          }} className="bg-gray-500 py-2 px-8 rounded-md hover:bg-gray-700 font-bold">
+
             Cancel
           </button>
         </div>
