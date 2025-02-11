@@ -20,8 +20,10 @@ const router = createBrowserRouter([
         path: "/users", 
         element: <UserDetail />,
         loader:loaderdata,
+        action:deleteUser,
         
       },
+      
       {
         path: "singleuser/:id", 
         element: <SingleUser />,
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
         element: <UpdateUser />,
         loader: userDetailLoader,
         action:updateAction,
+        
       },
       {
         path: "usercreate/:id",
