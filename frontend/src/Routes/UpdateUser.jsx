@@ -19,7 +19,7 @@ function UpdateUser() {
   const navigate = useNavigate();
 
   return (
-    <div className="container w-[50rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300 p-5 text-lime-50">
+    <div className="container w-[50rem] h-[23rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300 p-5 text-lime-50">
       <h1 className="text-2xl font-bold">Update User: {user.name}</h1>
 
       <Form method="post"  className="flex flex-col justify-center items-center gap-6">

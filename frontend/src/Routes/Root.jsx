@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import UserList from "../Component/UserList";
+import Navbar from "../Component/Navbar";
 
 function Root() {
   const [userInput, setUserInput] = useState("");
@@ -34,8 +35,9 @@ function Root() {
         {/* Right side */}
         <div
           id="detail"
-          className="h-[100vh] bg-slate-200 flex justify-start gap-5 w-[100%]"
+          className="h-[100vh] bg-slate-200  w-[100%]"
         >
+          <Navbar/>
           <Outlet />
         </div>
       </div>
