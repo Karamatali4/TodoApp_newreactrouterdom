@@ -8,6 +8,7 @@ import { loader } from "./store";
 import UserCreate,{action as createAction} from "./Routes/UserCreate";
 import DeleteUser, { action as deleteUser } from "./Routes/DeleteUser";
 import SingleUser from "./Routes/SingleUser";
+import ChildrenHome from "./Routes/ChildrenHome";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     action: action,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index:true, 
+        element: <ChildrenHome />,
+      },
       {
         path: "/users", 
         element: <UserDetail />,

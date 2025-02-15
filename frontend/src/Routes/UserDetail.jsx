@@ -48,7 +48,7 @@ const UserDetail = () => {
                 {user.map((data, index) => (
                   <>
                     <tr key={data._id}>
-                      <td class="px-6 py-4">{data.name}</td>
+                      <td class="px-6 py-4 hover:text-lime-300"><Link to={`/singleuser/${data._id}`}> {data.name} </Link></td>
                       <td class="px-6 py-4">{data.age}</td>
                       <td class="px-6 py-4 ">{data.email}</td>
                       <td class="px-6 py-4 hover:text-blue-900">
