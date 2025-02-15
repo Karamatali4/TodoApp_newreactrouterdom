@@ -4,6 +4,7 @@ import {
   Form,
   redirect,
   useActionData,
+  useFetcher,
   useLoaderData,
   useSubmit,
 } from "react-router-dom";
@@ -34,7 +35,7 @@ function UserCreate() {
 
   const actionData = useActionData();
   const [actionOriginated, setActionOriginated] = useState("");
-
+  const fetcher = useFetcher();
   // Handle data coming from loader
   useEffect(() => {
     if (loaderData.status === 200) {
@@ -48,7 +49,7 @@ function UserCreate() {
         <div className="p-5 text-lime-50 ">
           <h1 className="text-2xl font-bold"> {loaderData.name}</h1>
 
-          <Form
+          <fetcher.Form
             method="post"
             className="flex flex-col justify-center items-center gap-10"
           >
@@ -97,7 +98,7 @@ function UserCreate() {
                 Submit
               </button>
             </div>
-          </Form>
+          </fetcher.Form>
 
           <p>{actionOriginated}</p>
         </div>

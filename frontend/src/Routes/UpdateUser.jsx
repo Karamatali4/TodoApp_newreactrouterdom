@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, redirect, useFetcher, useLoaderData, useNavigate } from "react-router-dom";
 
 // Action function to handle form submission & update user
 export const action = async ({ request, params }) => {
@@ -17,12 +17,13 @@ export const action = async ({ request, params }) => {
 function UpdateUser() {
   const user = useLoaderData();
   const navigate = useNavigate();
+  const fetcher = useFetcher();
 
   return (
     <div className="container w-[50rem] h-[23rem] bg-cyan-600 m-auto rounded-t-3xl shadow-gray-300 p-5 text-lime-50">
       <h1 className="text-2xl font-bold">Update User: {user.name}</h1>
 
-      <Form method="post"  className="flex flex-col justify-center items-center gap-6">
+      <fetcher.Form method="post"  className="flex flex-col justify-center items-center gap-6">
         <div className="box">
           <label className="text-2xl font-bold">Name:</label>
           <input
@@ -70,7 +71,7 @@ function UpdateUser() {
             Cancel
           </button>
         </div>
-      </Form>
+      </fetcher.Form>
     </div>
   );
 }
