@@ -16,6 +16,9 @@ app.use(
     })
   );
 
+  app.get("/",(req,res) => {
+    res.send("Hello");
+  });
 // Routes
 app.use(router);
 
