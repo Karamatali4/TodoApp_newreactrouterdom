@@ -12,6 +12,7 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "@vercel/node": "^5.1.7",
     "cloudinary": "^1.21.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
