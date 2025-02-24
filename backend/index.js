@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(
     cors({
-      origin: process.env.BASE_URL,
+      origin: process.env.BASE_URL || process.env.FRONTENDURL,
       credentials: true,
       methods: "PUT,POST,GET,DELETE,PATCH,HEAD",
     })
